@@ -1,12 +1,12 @@
 {
-  "name": "jakubigla/qengine-i18n",
-  "description": "I18n stuff for extending ZF2 applications",
+  "name": "jakubigla/qengine-locale",
+  "description": "Locale handler for extending ZF2 applications",
   "license": "BSD-3-Clause",
   "keywords": [
     "framework",
     "zf2",
     "qengine",
-    "i18n"
+    "locale"
   ],
   "homepage": "http://youridea.pl",
   "require": {
