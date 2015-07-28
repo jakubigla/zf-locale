@@ -1,0 +1,29 @@
+{
+  "name": "jakubigla/qengine-i18n",
+  "description": "I18n stuff for extending ZF2 applications",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "framework",
+    "zf2",
+    "qengine",
+    "i18n"
+  ],
+  "homepage": "http://youridea.pl",
+  "require": {
+    "php": ">=5.5",
+    "zendframework/zend-eventmanager": "~2.5",
+    "zendframework/zend-http": "~2.5",
+    "zendframework/zend-modulemanager": "~2.5",
+    "zendframework/zend-mvc": "~2.5",
+    "zendframework/zend-servicemanager": "~2.5",
+    "zendframework/zend-stdlib": "~2.6"
+  },
+  "autoload": {
+    "psr-0": {
+      "QEngineI18n": "src/"
+    },
+    "classmap": [
+      "./Module.php"
+    ]
+  }
+}
