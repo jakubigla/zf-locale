@@ -20,7 +20,7 @@
   },
   "autoload": {
     "psr-0": {
-      "QEngineI18n": "src/"
+      "QEngineLocale": "src/"
     },
     "classmap": [
       "./Module.php"
