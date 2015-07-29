@@ -8,4 +8,5 @@ nbproject
 .project
 .settings
 vendor
+/build
 test/coverage-report
