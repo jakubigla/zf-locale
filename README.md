@@ -1,3 +1,3 @@
 # QEngineLocale
 
-Locale handler for extending ZF2 applications
+Locale handler for ZF2 applications

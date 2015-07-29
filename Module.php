@@ -23,12 +23,8 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface
      */
     public function onBootstrap(MvcEvent $event)
     {
-        /** @var ModuleOptions $moduleOptions */
-        $application    = $event->getApplication();
-        $moduleOptions  = $application->getServiceManager()->get(ModuleOptions::class);
-
-        $localeListener = new LocaleListener($moduleOptions, $application->getRequest());
-        $localeListener->attach($application->getEventManager());
+        $localeListener = new LocaleListener($event);
+        $localeListener->attach($event->getApplication()->getEventManager());
     }
 
     /**
@@ -51,7 +47,7 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface
     {
         return [
             'factories'  => [
-                ModuleOptions::class => ModuleOptionsFactory::class,
+
             ],
         ];
     }

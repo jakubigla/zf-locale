@@ -1,0 +1,109 @@
+<project name="jenkins-zf2-skeleton" default="build" basedir=".">
+    <property file="./build.properties"/>
+    <php expression="include('vendor/autoload.php')"/>
+
+    <target name="clean" description="Clean up and create artifact directories">
+        <delete dir="${dir.build}/api"/>
+        <delete dir="${dir.build}/code-browser"/>
+        <delete dir="${dir.build}/coverage"/>
+        <delete dir="${dir.build}/logs"/>
+        <delete dir="${dir.build}/pdepend"/>
+
+        <mkdir dir="${dir.build}/api"/>
+        <mkdir dir="${dir.build}/code-browser"/>
+        <mkdir dir="${dir.build}/coverage"/>
+        <mkdir dir="${dir.build}/logs"/>
+        <mkdir dir="${dir.build}/pdepend"/>
+    </target>
+
+    <target name="phpunit" description="Run unit tests using PHPUnit and generates junit.xml and clover.xml">
+        <exec logoutput="true"
+              command="${dir.bin}phpunit --configuration=${dir.test}phpunit.xml --log-junit=${dir.build}/logs/junit.xml --coverage-crap4j=${dir.build}/logs/crap4j.xml --coverage-clover=${dir.build}/logs/clover.xml"/>
+    </target>
+
+    <target name="pdepend" description="Generate jdepend.xml and software metrics charts using PHP_Depend">
+        <exec logoutput="true"
+              command="${dir.bin}pdepend --jdepend-xml=${dir.build}/logs/jdepend.xml --jdepend-chart=${dir.build}/pdepend/dependencies.svg --overview-pyramid=${dir.build}/pdepend/overview-pyramid.svg ${dir.src}"/>
+    </target>
+
+    <target name="phpmd" description="Generate pmd.xml using PHPMD">
+        <exec logoutput="true" spawn="true"
+              command="${dir.bin}phpmd ${dir.src} xml codesize,design,naming,unusedcode --reportfile ${dir.build}/logs/pmd.xml"/>
+    </target>
+
+    <target name="phpcpd" description="Generate pmd-cpd.xml using PHPCPD">
+        <exec logoutput="true" command="${dir.bin}phpcpd --log-pmd ${dir.build}/logs/pmd-cpd.xml ${dir.src}"/>
+    </target>
+
+    <target name="phploc" description="Generate phploc.csv">
+        <exec logoutput="true" command="${dir.bin}phploc --log-csv ${dir.build}/logs/phploc.csv ${dir.src}"/>
+    </target>
+
+    <target name="phpcs" description="Generate checkstyle.xml using PHP_CodeSniffer">
+        <exec logoutput="true"
+              command="${dir.bin}phpcs --report=checkstyle --report-file=${dir.build}/logs/checkstyle.xml --standard=PSR2 ${dir.src}"/>
+    </target>
+
+    <target name="phpdoc" description="Generate API documentation using PHPDocumentor">
+        <exec logoutput="true" command="${dir.bin}phpdoc -d ${dir.src} -t ${dir.build}/api"/>
+    </target>
+
+    <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
+        <exec logoutput="true"
+              command="${dir.bin}phpcb --log ${dir.build}/logs --source ${dir.src} --output ${dir.build}/code-browser"/>
+    </target>
+
+    <target name="composerInstall" description="Installing dependencies">
+        <exec logoutput="true"
+              command="composer install --no-interaction --prefer-dist -o"/>
+    </target>
+
+    <target name="analyseParallel">
+        <parallel threadCount="${threads}">
+            <phingcall target="analyse"/>
+        </parallel>
+    </target>
+    <target name="analyseSerial">
+        <phingcall target="analyse"/>
+    </target>
+
+    <target name="analyse" description="Run the pdepend, phpmd, phpcpd, phpcs, phpdoc, phploc, phpcb tasks.">
+        <phingcall target="pdepend"/>
+        <phingcall target="phpmd"/>
+        <phingcall target="phpcpd"/>
+        <phingcall target="phpcs"/>
+        <phingcall target="phpdoc"/>
+        <phingcall target="phploc"/>
+        <phingcall target="phpcb"/>
+    </target>
+
+    <target name="lint" description="Check all PHP files for syntax errors using PHPLint">
+        <phplint haltonfailure="true" level="info">
+            <fileset dir="${dir.base}/src">
+                <include name="**/*.php"/>
+            </fileset>
+            <fileset dir="${dir.base}/config">
+                <include name="**/*.php"/>
+            </fileset>
+        </phplint>
+    </target>
+
+    <target name="tryAnalyseParallel"
+            description="Analyses and checks for parallel support in PHP.">
+        <exec command="php -m | grep pcntl" returnProperty="pcntlEnabled"/>
+        <if>
+            <equals arg1="${pcntlEnabled}" arg2="pcntl"/>
+            <then>
+                <echo message="PCNTL Enabled. Running Taks in parallel with ${threads} threads."/>
+                <phingcall target="analyseParallel"/>
+            </then>
+            <else>
+                <echo message="PCNTL is not enabled. Running task serially."/>
+                <phingcall target="analyseSerial"/>
+            </else>
+        </if>
+    </target>
+
+    <target name="build" depends="clean, composerInstall, lint, phpunit, tryAnalyseParallel"/>
+
+</project>

@@ -13,7 +13,7 @@ use Zend\Stdlib\AbstractOptions;
 class ModuleOptions extends AbstractOptions
 {
     /** @var bool */
-    private $multiLingual;
+    private $multiLanguage;
 
     /** @var array */
     private $available;
@@ -21,22 +21,28 @@ class ModuleOptions extends AbstractOptions
     /** @var string */
     private $default;
 
+    /** @var array */
+    private $domainMap;
+
+    /** @var bool */
+    private $mappedDomainRedirectable;
+
     /**
      * @return boolean
      */
-    public function isMultiLingual()
+    public function isMultiLanguage()
     {
-        return $this->multiLingual;
+        return $this->multiLanguage;
     }
 
     /**
-     * @param boolean $multiLingual
+     * @param boolean $multiLanguage
      *
      * @return $this
      */
-    public function setMultiLingual($multiLingual)
+    public function setMultiLanguage($multiLanguage)
     {
-        $this->multiLingual = $multiLingual;
+        $this->multiLanguage = $multiLanguage;
         return $this;
     }
 
@@ -75,6 +81,44 @@ class ModuleOptions extends AbstractOptions
     public function setDefault($default)
     {
         $this->default = $default;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDomainMap()
+    {
+        return $this->domainMap;
+    }
+
+    /**
+     * @param array $domainMap
+     *
+     * @return $this
+     */
+    public function setDomainMap($domainMap)
+    {
+        $this->domainMap = $domainMap;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isMappedDomainRedirectable()
+    {
+        return $this->mappedDomainRedirectable;
+    }
+
+    /**
+     * @param boolean $mappedDomainRedirectable
+     *
+     * @return $this
+     */
+    public function setMappedDomainRedirectable($mappedDomainRedirectable)
+    {
+        $this->mappedDomainRedirectable = $mappedDomainRedirectable;
         return $this;
     }
 }
