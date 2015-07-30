@@ -12,9 +12,9 @@ return [
             'pl' => 'pl_PL',
             'en' => 'en_GB',
         ],
-        'default'       => 'pl',
+        'default'       => 'en',
         'domain_map' => [
-            //'localhost' => 'pl',
+            'example.com' => 'pl',
         ],
         'mapped_domain_redirectable' => false,
     ],

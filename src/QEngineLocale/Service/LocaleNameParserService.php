@@ -113,9 +113,9 @@ class LocaleNameParserService
      *
      * @param string $locale
      *
-     * @return UriInterface
+     * @return string
      */
-    public function getUriForLocale($locale)
+    public function getUrlForLocale($locale)
     {
         $alias     = $this->getAliasFromLocale($locale);
         $path      = $this->uri->getPath();
@@ -123,9 +123,8 @@ class LocaleNameParserService
 
         array_splice($pathParts, 1, 0, $alias);
         $path      = rtrim(implode('/', $pathParts), '/');
-        $this->uri->setPath($path);
 
-        return $this->uri;
+        return $path;
     }
 
     /**

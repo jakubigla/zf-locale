@@ -56,7 +56,8 @@ class LocaleListener extends AbstractListenerAggregate implements ListenerAggreg
     public function handleLocale()
     {
         /** @var PhpRequest $request */
-        $request       = $this->mvcEvent->getApplication()->getRequest();
+        $request       = $this->mvcEvent->getRequest();
+        $response      = $this->mvcEvent->getResponse();
         $moduleOptions = $this->getModuleOptions();
 
         if (!$request instanceof PhpRequest || !$moduleOptions->isMultiLanguage()) {
@@ -72,19 +73,17 @@ class LocaleListener extends AbstractListenerAggregate implements ListenerAggreg
             Locale::setDefault($localeFromHost);
 
             if (!$moduleOptions->isMappedDomainRedirectable()) {
-                return;
+                return $response;
             }
         } catch (LocaleNotFoundException $exception) {
             //no locale in host? Let's fond them somewhere else!
             $localeFromHost = null;
         }
 
-
-
         try {
             $localeFromPath = $localeNameParserService->getLocaleFromUriPath();
             Locale::setDefault($localeFromPath);
-            return;
+            return $response;
 
         } catch (LocaleNotFoundException $exception) {
             $localeFromPath = null;
@@ -92,7 +91,7 @@ class LocaleListener extends AbstractListenerAggregate implements ListenerAggreg
 
         if (is_null($localeFromPath) && !is_null($localeFromHost)) {
             Locale::setDefault($localeFromHost);
-            return;
+            return $response;
         }
 
         //use browser locale
@@ -103,13 +102,14 @@ class LocaleListener extends AbstractListenerAggregate implements ListenerAggreg
         }
 
         /** @var PhpResponse $response */
-        $uri      = $localeNameParserService->getUriForLocale($locale);
-        $response = $this->mvcEvent->getResponse();
+        $url      = $localeNameParserService->getUrlForLocale($locale);
 
-        $response->getHeaders()->addHeaderLine('Location', $uri->getPath());
+        $response->getHeaders()->addHeaderLine('Location', $url);
         $response->setStatusCode(PhpResponse::STATUS_CODE_302);
         $response->sendHeaders();
         $this->mvcEvent->stopPropagation(true);
+
+        return $response;
     }
 
     /**

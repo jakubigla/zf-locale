@@ -1,0 +1,16 @@
+<?php
+
+return [
+    /*'QEngineLocale' => [
+        'multi_language' => true,
+        'available' => [
+           'pl' => 'pl_PL',
+           'en' => 'en_GB',
+        ],
+        'default' => 'en',
+        'domain_map' => [
+           'example.pl' => 'pl',
+        ],
+        'mapped_domain_redirectable' => false,
+   ],*/
+];

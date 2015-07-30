@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit
-        colors="true"
-        stopOnFailure="false"
-        syntaxCheck="true"
-        >
+<phpunit colors="true" stopOnFailure="false" syntaxCheck="true">
     <testsuites>
         <testsuite name="Module test suite">
             <directory>./module/src</directory>
@@ -17,9 +13,4 @@
             <directory>../test</directory>
         </blacklist>
     </filter>
-    <logging>
-        <log type="coverage-html" target="./coverage-report" charset="UTF-8"
-             yui="true" highlight="true" lowUpperBound="50"
-             highLowerBound="80"/>
-    </logging>
 </phpunit>
