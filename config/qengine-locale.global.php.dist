@@ -1,7 +1,7 @@
 <?php
 
 return [
-    /*'QEngineLocale' => [
+    'QEngineLocale' => [
         'multi_language' => true,
         'available' => [
            'pl' => 'pl_PL',
@@ -9,8 +9,8 @@ return [
         ],
         'default' => 'en',
         'domain_map' => [
-           'example.pl' => 'pl',
+           //'example.pl' => 'pl',
         ],
         'mapped_domain_redirectable' => false,
-   ],*/
+   ],
 ];
