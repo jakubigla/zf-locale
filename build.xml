@@ -1,4 +1,4 @@
-<project name="jenkins-zf2-skeleton" default="build" basedir=".">
+<project name="qengine-module" default="build" basedir=".">
     <property file="./build.properties"/>
     <php expression="include('vendor/autoload.php')"/>
 
@@ -18,7 +18,7 @@
 
     <target name="phpunit" description="Run unit tests using PHPUnit and generates junit.xml and clover.xml">
         <exec logoutput="true"
-              command="${dir.bin}phpunit --configuration=${dir.test}phpunit.xml --log-junit=${dir.build}/logs/junit.xml --coverage-crap4j=${dir.build}/logs/crap4j.xml --coverage-clover=${dir.build}/logs/clover.xml"/>
+              command="${dir.bin}phpunit --configuration=${dir.test}/phpunit.xml --log-junit=${dir.build}/logs/junit.xml --coverage-crap4j=${dir.build}/logs/crap4j.xml --coverage-clover=${dir.build}/logs/clover.xml"/>
     </target>
 
     <target name="pdepend" description="Generate jdepend.xml and software metrics charts using PHP_Depend">
