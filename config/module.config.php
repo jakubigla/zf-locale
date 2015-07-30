@@ -7,15 +7,10 @@ use QEngineLocale\Service\LocaleNameParserServiceFactory;
 
 return [
     'QEngineLocale' => [
-        'multi_language' => true,
-        'available'     => [
-            'pl' => 'pl_PL',
-            'en' => 'en_GB',
-        ],
-        'default'       => 'en',
-        'domain_map' => [
-            'example.com' => 'pl',
-        ],
+        'multi_language' => false,
+        'available'      => [],
+        'default'        => null,
+        'domain_map'     => [],
         'mapped_domain_redirectable' => false,
     ],
 
