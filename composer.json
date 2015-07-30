@@ -25,7 +25,8 @@
     "pdepend/pdepend": "~2.1",
     "phploc/phploc": "~2.1",
     "phpunit/phpunit": "~4.7",
-    "mayflower/php-codebrowser": "~1.1"
+    "mayflower/php-codebrowser": "~1.1",
+    "phpdocumentor/phpdocumentor": "~2.8"
   },
   "autoload": {
     "psr-0": {
