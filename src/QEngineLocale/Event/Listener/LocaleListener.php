@@ -61,7 +61,7 @@ class LocaleListener extends AbstractListenerAggregate implements ListenerAggreg
         $moduleOptions = $this->getModuleOptions();
 
         if (!$request instanceof PhpRequest || !$moduleOptions->isMultiLanguage()) {
-            return;
+            return $response;
         }
 
         /** @var LocaleNameParserService $localeNameParserService */

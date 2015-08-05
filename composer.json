@@ -1,5 +1,5 @@
 {
-  "name": "jakubigla/qengine-locale",
+  "name": "qengine/zend-locale",
   "description": "Locale handler for ZF2 applications",
   "license": "BSD-3-Clause",
   "keywords": [
