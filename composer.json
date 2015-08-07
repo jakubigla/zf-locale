@@ -6,7 +6,8 @@
     "framework",
     "zf2",
     "qengine",
-    "locale"
+    "locale",
+    "l10n"
   ],
   "homepage": "http://youridea.pl",
   "require": {
