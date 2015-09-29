@@ -1,15 +1,15 @@
 <?php
 
-namespace QEngineLocale\Service;
+namespace QEngine\Locale\Service;
 
-use QEngineLocale\Exception\LocaleNotFoundException;
-use QEngineLocale\ModuleOptions;
+use QEngine\Locale\Exception\LocaleNotFoundException;
+use QEngine\Locale\ModuleOptions;
 use Zend\Uri\UriInterface;
 
 /**
  * Class LocaleNameParserService
  *
- * @package QEngineLocale\Service
+ * @package QEngine\Locale\Service
  * @author Jakub Igla <jakub.igla@valtech.co.uk>
  */
 class LocaleNameParserService

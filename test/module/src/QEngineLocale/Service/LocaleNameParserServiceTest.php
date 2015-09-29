@@ -1,14 +1,14 @@
 <?php
 
-namespace QEngineLocale\Service;
+namespace QEngine\Locale\Service;
 
-use QEngineLocale\ModuleOptions;
+use QEngine\Locale\ModuleOptions;
 use Zend\Uri\UriInterface;
 
 /**
  * Class LocaleNameParserServiceTest
  *
- * @package QEngineLocale\Service
+ * @package QEngine\Locale\Service
  * @author  Jakub Igla <jakub.igla@valtech.co.uk>
  */
 class LocaleNameParserServiceTest extends \PHPUnit_Framework_TestCase
@@ -61,7 +61,7 @@ class LocaleNameParserServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \QEngineLocale\Exception\LocaleNotFoundException
+     * @expectedException \QEngine\Locale\Exception\LocaleNotFoundException
      * @expectedExceptionMessage No locale is mapped to this host
      */
     public function testGetLocaleFromHostWithNoMappedDomain()

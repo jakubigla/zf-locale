@@ -1,11 +1,11 @@
 <?php
 
-namespace QEngineLocale\Event\Listener;
+namespace QEngine\Locale\Event\Listener;
 
-use QEngineLocale\Exception\LocaleNotFoundException;
-use QEngineLocale\ModuleOptions;
+use QEngine\Locale\Exception\LocaleNotFoundException;
+use QEngine\Locale\ModuleOptions;
 use Locale;
-use QEngineLocale\Service\LocaleNameParserService;
+use QEngine\Locale\Service\LocaleNameParserService;
 use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\ListenerAggregateInterface;
@@ -16,7 +16,7 @@ use Zend\Mvc\MvcEvent;
 /**
  * Class LocaleListener
  *
- * @package QEngineLocale\Event\Listener
+ * @package QEngine\Locale\Event\Listener
  * @author Jakub Igla <jakub.igla@valtech.co.uk>
  */
 class LocaleListener extends AbstractListenerAggregate implements ListenerAggregateInterface

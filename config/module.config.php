@@ -1,12 +1,12 @@
 <?php
 
-namespace QEngineLocale;
+namespace QEngine\Locale;
 
-use QEngineLocale\Service\LocaleNameParserService;
-use QEngineLocale\Service\LocaleNameParserServiceFactory;
+use QEngine\Locale\Service\LocaleNameParserService;
+use QEngine\Locale\Service\LocaleNameParserServiceFactory;
 
 return [
-    'QEngineLocale' => [
+    'QEngine\Locale' => [
         'multi_language' => false,
         'available'      => [],
         'default'        => null,

@@ -1,8 +1,8 @@
 <?php
 
-namespace QEngineLocale;
+namespace QEngine\Locale;
 
-use QEngineLocale\Event\Listener\LocaleListener;
+use QEngine\Locale\Event\Listener\LocaleListener;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\Mvc\MvcEvent;
@@ -10,7 +10,7 @@ use Zend\Mvc\MvcEvent;
 /**
  * Class Module
  *
- * @package QEngineI18n
+ * @package QEngine\Locale
  * @author Jakub Igla <jakub.igla@gmail.com>
  */
 class Module implements ConfigProviderInterface, ServiceProviderInterface
@@ -38,10 +38,7 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface
     }
 
     /**
-     * Expected to return \Zend\ServiceManager\Config object or array to
-     * seed such an object.
-     *
-     * @return array|\Zend\ServiceManager\Config
+     * @return array
      */
     public function getServiceConfig()
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace QEngineLocale\Service;
+namespace QEngine\Locale\Service;
 
-use QEngineLocale\ModuleOptions;
+use QEngine\Locale\ModuleOptions;
 use Zend\Http\PhpEnvironment\Request as PhpRequest;
 use Zend\ServiceManager\Exception\RuntimeException;
 use Zend\ServiceManager\FactoryInterface;
@@ -11,7 +11,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 /**
  * Class LocaleNameParserServiceFactory
  *
- * @package QEngineLocale\Service
+ * @package QEngine\Locale\Service
  * @author Jakub Igla <jakub.igla@valtech.co.uk>
  */
 class LocaleNameParserServiceFactory implements FactoryInterface

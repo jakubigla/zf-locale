@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'QEngineLocale' => [
+    'QEngine\Locale' => [
         'multi_language' => true,
         'available' => [
            'pl' => 'pl_PL',

@@ -1,13 +1,13 @@
 <?php
 
-namespace QEngineLocale;
+namespace QEngine\Locale;
 
 use Zend\Stdlib\AbstractOptions;
 
 /**
  * Class ModuleOptions
  *
- * @package QEngineLocale
+ * @package QEngine\Locale
  * @author Jakub Igla <jakub.igla@gmail.com>
  */
 class ModuleOptions extends AbstractOptions

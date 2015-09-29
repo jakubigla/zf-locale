@@ -1,6 +1,6 @@
 <?php
 
-namespace QEngineLocale;
+namespace QEngine\Locale;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -8,7 +8,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 /**
  * Class ModuleOptionsFactory
  *
- * @package QEngineLocale
+ * @package QEngine\Locale
  * @author Jakub Igla <jakub.igla@gmail.com>
  */
 class ModuleOptionsFactory implements FactoryInterface

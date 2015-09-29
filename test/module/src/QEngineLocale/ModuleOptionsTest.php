@@ -1,11 +1,11 @@
 <?php
 
-namespace QEngineLocale;
+namespace QEngine\Locale;
 
 /**
  * Class ModuleOptionsTest
  *
- * @package QEngineLocale
+ * @package QEngine\Locale
  * @author Jakub Igla <jakub.igla@valtech.co.uk>
  */
 class ModuleOptionsTest extends \PHPUnit_Framework_TestCase

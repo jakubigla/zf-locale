@@ -1,8 +1,8 @@
 <?php
 
-namespace QEngineLocale\Service;
+namespace QEngine\Locale\Service;
 
-use QEngineLocale\ModuleOptions;
+use QEngine\Locale\ModuleOptions;
 use Zend\Http\PhpEnvironment\Request as PhpRequest;
 use Zend\Stdlib\Request as StdRequest;
 use Zend\ServiceManager\ServiceManager;
@@ -11,7 +11,7 @@ use Zend\Uri\UriInterface;
 /**
  * Class LocaleNameParserServiceFactoryTest
  *
- * @package QEngineLocale\Service
+ * @package QEngine\Locale\Service
  * @author Jakub Igla <jakub.igla@valtech.co.uk>
  */
 class LocaleNameParserServiceFactoryTest extends \PHPUnit_Framework_TestCase

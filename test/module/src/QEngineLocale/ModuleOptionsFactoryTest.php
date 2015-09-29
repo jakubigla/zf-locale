@@ -1,13 +1,13 @@
 <?php
 
-namespace QEngineLocale;
+namespace QEngine\Locale;
 
 use Zend\ServiceManager\ServiceManager;
 
 /**
  * Class ModuleOptionsFactoryTest
  *
- * @package QEngineLocale
+ * @package QEngine\Locale
  * @author Jakub Igla <jakub.igla@valtech.co.uk>
  */
 class ModuleOptionsFactoryTest extends \PHPUnit_Framework_TestCase

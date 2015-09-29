@@ -1,11 +1,11 @@
 <?php
 
-namespace QEngineLocale\Exception;
+namespace QEngine\Locale\Exception;
 
 /**
  * Class LocaleNotFoundException
  *
- * @package QEngineLocale\Exception
+ * @package QEngine\Locale\Exception
  * @author Jakub Igla <jakub.igla@valtech.co.uk>
  */
 class LocaleNotFoundException extends \Exception
