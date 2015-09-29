@@ -30,8 +30,8 @@
     "phpdocumentor/phpdocumentor": "~2.8"
   },
   "autoload": {
-    "psr-0": {
-      "QEngine\\Locale": "src/"
+    "psr-4": {
+      "QEngine\\Locale\\": "src/"
     },
     "classmap": [
       "./Module.php"
