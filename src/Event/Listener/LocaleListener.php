@@ -61,7 +61,7 @@ class LocaleListener extends AbstractListenerAggregate implements ListenerAggreg
         $moduleOptions = $this->getModuleOptions();
 
         if (!$request instanceof PhpRequest || !$moduleOptions->isMultiLanguage()) {
-            return $response;
+            return null;
         }
 
         /** @var LocaleNameParserService $localeNameParserService */
@@ -70,10 +70,10 @@ class LocaleListener extends AbstractListenerAggregate implements ListenerAggreg
 
         try {
             $localeFromHost = $localeNameParserService->getLocaleFromHost();
-            Locale::setDefault($localeFromHost);
+            $this->setAppLocale($localeFromHost);
 
             if (!$moduleOptions->isMappedDomainRedirectable()) {
-                return $response;
+                return null;
             }
         } catch (LocaleNotFoundException $exception) {
             //no locale in host? Let's fond them somewhere else!
@@ -82,16 +82,16 @@ class LocaleListener extends AbstractListenerAggregate implements ListenerAggreg
 
         try {
             $localeFromPath = $localeNameParserService->getLocaleFromUriPath();
-            Locale::setDefault($localeFromPath);
-            return $response;
+            $this->setAppLocale($localeFromPath);
+            return null;
 
         } catch (LocaleNotFoundException $exception) {
             $localeFromPath = null;
         }
 
         if (is_null($localeFromPath) && !is_null($localeFromHost)) {
-            Locale::setDefault($localeFromHost);
-            return $response;
+
+            return null;
         }
 
         //use browser locale
@@ -118,5 +118,19 @@ class LocaleListener extends AbstractListenerAggregate implements ListenerAggreg
     private function getModuleOptions()
     {
         return $this->mvcEvent->getApplication()->getServiceManager()->get(ModuleOptions::class);
+    }
+
+    private function setAppLocale($locale)
+    {
+        Locale::setDefault($locale);
+
+        /** @var LocaleNameParserService $localeNameParserService */
+        /** @var PhpRequest              $request */
+        $request                 = $this->mvcEvent->getRequest();
+        $localeNameParserService = $this->mvcEvent
+            ->getApplication()->getServiceManager()->get(LocaleNameParserService::class);
+        $localeAlias             = $localeNameParserService->getAliasFromLocale($locale);
+
+        $this->getModuleOptions()->setCurrentLocale($localeAlias);
     }
 }

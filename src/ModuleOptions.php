@@ -27,6 +27,8 @@ class ModuleOptions extends AbstractOptions
     /** @var bool */
     private $mappedDomainRedirectable;
 
+    private $currentLocale;
+
     /**
      * @return boolean
      */
@@ -119,6 +121,28 @@ class ModuleOptions extends AbstractOptions
     public function setMappedDomainRedirectable($mappedDomainRedirectable)
     {
         $this->mappedDomainRedirectable = $mappedDomainRedirectable;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentLocale()
+    {
+        if (empty($this->currentLocale)) {
+            return $this->getDefault();
+        }
+        return $this->currentLocale;
+    }
+
+    /**
+     * @param mixed $currentLocale
+     *
+     * @return $this
+     */
+    public function setCurrentLocale($currentLocale)
+    {
+        $this->currentLocale = $currentLocale;
         return $this;
     }
 }

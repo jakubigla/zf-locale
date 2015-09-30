@@ -4,6 +4,7 @@ namespace QEngine\Locale;
 
 use QEngine\Locale\Service\LocaleNameParserService;
 use QEngine\Locale\Service\LocaleNameParserServiceFactory;
+use QEngine\Locale\View\Helper\LocaleHelperFactory;
 
 return [
     'QEngine\Locale' => [
@@ -18,6 +19,12 @@ return [
         'factories' => [
             ModuleOptions::class           => ModuleOptionsFactory::class,
             LocaleNameParserService::class => LocaleNameParserServiceFactory::class,
+        ],
+    ],
+
+    'view_helpers' => [
+        'factories'=> [
+            'qengineLocale' => LocaleHelperFactory::class,
         ],
     ],
 ];

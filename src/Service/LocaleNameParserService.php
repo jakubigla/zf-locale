@@ -158,7 +158,7 @@ class LocaleNameParserService
      * @return string
      * @throws LocaleNotFoundException
      */
-    private function getAliasFromLocale($locale)
+    public function getAliasFromLocale($locale)
     {
         $locale = $this->getLocaleFromOptionsByKey($locale);
         $alias  = array_search($locale, $this->moduleOptions->getAvailable());
